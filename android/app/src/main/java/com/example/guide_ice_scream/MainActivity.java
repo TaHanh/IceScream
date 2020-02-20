@@ -7,8 +7,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.guide_ice_scream.utils.CustomDialog;
 import com.example.guide_ice_scream.utils.SharedPrefsUtils;
 import com.example.ratedialog.RatingDialog;
+
+import java.time.temporal.ChronoUnit;
 
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugin.common.MethodCall;
@@ -17,11 +20,21 @@ import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity implements RatingDialog.RatingDialogInterFace {
     private static final String CHANNEL = "guide_module";
+    CustomDialog customDialog;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     GeneratedPluginRegistrant.registerWith(this);
-
+    customDialog = new CustomDialog(this);
+    customDialog.setNativeAds(this, R.layout.ad_unified_dialog);
+    customDialog.setContent("Are you sure want to exit?");
+    customDialog.setLable("Exit app");
+    customDialog.setButtonOkClickListener(new CustomDialog.ButtonOkClickListener() {
+      @Override
+      public void onClick() {
+        finish();
+      }
+    });
     new MethodChannel(getFlutterView(), CHANNEL).setMethodCallHandler(
             new MethodChannel.MethodCallHandler() {
               @Override
@@ -48,6 +61,10 @@ public class MainActivity extends FlutterActivity implements RatingDialog.Rating
                   case "moveToNewApp":
                     moveToNewApp(call.argument("newAppId"));
                     break;
+                  case "showDialogBack": {
+                    customDialog.show();
+                    break;
+                  }
                 }
 
               }
