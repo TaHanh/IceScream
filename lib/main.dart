@@ -17,18 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WillPopScope(
-        child: HomeScreen(),
-        onWillPop: onPop,
-      ),
+      home: HomeScreen(),
     );
-//    return MaterialApp(debugShowCheckedModeBanner: false, initialRoute: '/', routes: {
-//      '/': (context) => HomeScreen(),
-//    });
-  }
-
-  Future<bool> onPop() {
-    platform.invokeMethod("showDialogBack");
-    return Future.value(false);
+    return MaterialApp(debugShowCheckedModeBanner: false, initialRoute: '/', routes: {
+      '/': (context) => HomeScreen(),
+    });
   }
 }
