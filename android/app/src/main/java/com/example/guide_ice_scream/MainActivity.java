@@ -30,6 +30,12 @@ public class MainActivity extends FlutterActivity implements RatingDialog.Rating
         customDialog.setNativeAds(this, R.layout.ad_unified_dialog);
         customDialog.setContent("Are you sure want to exit?");
         customDialog.setLable("Exit app");
+        customDialog.setButtonOkClickListener(new CustomDialog.ButtonOkClickListener() {
+            @Override
+            public void onClick() {
+                finish();
+            }
+        });
 
         new MethodChannel(getFlutterView(), CHANNEL).setMethodCallHandler(
                 new MethodChannel.MethodCallHandler() {

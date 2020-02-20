@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp">
+    android:layout_height="wrap_content">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,16 +34,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Bạn có muốn thoát ? "
-            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#000000"
             android:textFontWeight="700"
-            android:textAlignment="center" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtDialogCotent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Đây là content demo content demo content demo  content demo  content demo  content demo  content demo " />
+            android:text="Đây là content demo content demo content demo  content demo  content demo  content demo  content demo "
+            android:textColor="#000000" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -57,7 +57,9 @@
                 android:id="@+id/btnHuy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hủy"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Cancel"
+                android:textColor="@color/white"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/btnThoat"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FF3B3B"
-                android:text="Thoát"
+                android:text="Exit"
+                android:textColor="@color/white"
                 app:layout_constraintLeft_toRightOf="@+id/btnHuy"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/btnHuy" />

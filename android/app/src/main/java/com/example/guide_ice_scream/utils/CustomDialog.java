@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -22,9 +23,14 @@ public class CustomDialog {
     Activity activity;
     FrameLayout frameLayout;
     TextView txtLable, txtContent;
-    MaterialButton btnOk, btnHuy;
+    Button btnOk, btnHuy;
     AlertDialog alertDialog;
-    ButtonOkClickListener click;
+    ButtonOkClickListener buttonOkClickListener;
+
+    public void setButtonOkClickListener(ButtonOkClickListener buttonOkClickListener) {
+        this.buttonOkClickListener = buttonOkClickListener;
+    }
+
     public CustomDialog(@NonNull Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         ViewGroup viewGroup = activity.findViewById(android.R.id.content);
@@ -34,10 +40,21 @@ public class CustomDialog {
         txtContent = dialogView.findViewById(R.id.txtDialogCotent);
         btnHuy = dialogView.findViewById(R.id.btnHuy);
         btnOk = dialogView.findViewById(R.id.btnThoat);
-
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(buttonOkClickListener!= null ) buttonOkClickListener.onClick();
+            }
+        });
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
         builder.setView(dialogView);
         alertDialog = builder.create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
     }
 
     public void setLable(String lable) {
@@ -77,7 +94,7 @@ public class CustomDialog {
     public void show() {
         alertDialog.show();
     }
-    interface ButtonOkClickListener{
+    public interface ButtonOkClickListener{
         void onClick();
     }
 }
