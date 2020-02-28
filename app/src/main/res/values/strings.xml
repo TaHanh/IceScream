@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Guide for Horror Neighborhood</string>
+<!--    <string name="ad_unit_it" >ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="app_ads_id">ca-app-pub-3940256099942544~3347511713</string>-->
+<!--    <string name="ads_inter">ca-app-pub-3940256099942544/1033173712</string>-->
+    <string name="ad_unit_it" >ca-app-pub-7631653983008802/5241026032</string> //banner
+    <string name="app_ads_id">ca-app-pub-7631653983008802~5432597723</string>
+    <string name="ads_inter">ca-app-pub-7631653983008802/8988699351</string>
+</resources>
